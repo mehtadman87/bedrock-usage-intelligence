@@ -1,0 +1,3615 @@
+{
+  "Sheets": [
+    {
+      "SheetId": "c24ce41a-7749-460d-8391-4863102266a9",
+      "Name": "Executive Summary",
+      "ParameterControls": [
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "exec-date-start-control",
+            "Title": "Start Date",
+            "SourceParameterName": "DateRangeStart",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD"
+            }
+          }
+        },
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "exec-date-end-control",
+            "Title": "End Date",
+            "SourceParameterName": "DateRangeEnd",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD"
+            }
+          }
+        }
+      ],
+      "Visuals": [
+        {
+          "LineChartVisual": {
+            "VisualId": "1dd51597-cb9b-476d-a385-52ac7c3e7bbc",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Daily Token Usage (Input vs Output)"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "LineChartAggregatedFieldWells": {
+                  "Category": [
+                    {
+                      "DateDimensionField": {
+                        "FieldId": "cu-area-date",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "timestamp"
+                        },
+                        "DateGranularity": "DAY",
+                        "HierarchyId": "cu-area-date"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-area-inputtokens",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "inputtokens"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "NumberDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 1
+                              },
+                              "NumberScale": "AUTO",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-area-outputtokens",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "outputtokens"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "NumberDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 1
+                              },
+                              "NumberScale": "AUTO",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "Colors": []
+                }
+              },
+              "SortConfiguration": {
+                "CategorySort": [
+                  {
+                    "FieldSort": {
+                      "FieldId": "cu-area-date",
+                      "Direction": "DESC"
+                    }
+                  }
+                ]
+              },
+              "Type": "AREA",
+              "XAxisLabelOptions": {
+                "Visibility": "VISIBLE",
+                "AxisLabelOptions": [
+                  {
+                    "CustomLabel": "Date",
+                    "ApplyTo": {
+                      "FieldId": "cu-area-date",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "timestamp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "PrimaryYAxisLabelOptions": {
+                "Visibility": "VISIBLE",
+                "AxisLabelOptions": [
+                  {
+                    "CustomLabel": "Input Tokens",
+                    "ApplyTo": {
+                      "FieldId": "cu-area-inputtokens",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "inputtokens"
+                      }
+                    }
+                  },
+                  {
+                    "CustomLabel": "Output Tokens",
+                    "ApplyTo": {
+                      "FieldId": "cu-area-outputtokens",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "outputtokens"
+                      }
+                    }
+                  }
+                ]
+              },
+              "Legend": {
+                "Visibility": "VISIBLE",
+                "Width": "123px"
+              },
+              "DataLabels": {
+                "Visibility": "HIDDEN",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "Tooltip": {
+                "TooltipVisibility": "VISIBLE",
+                "SelectedTooltipType": "BASIC",
+                "FieldBasedTooltip": {
+                  "AggregationVisibility": "HIDDEN",
+                  "TooltipTitleType": "PRIMARY_VALUE",
+                  "TooltipFields": [
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "cu-area-date",
+                        "Visibility": "VISIBLE"
+                      }
+                    },
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "cu-area-inputtokens",
+                        "Visibility": "VISIBLE"
+                      }
+                    },
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "cu-area-outputtokens",
+                        "Visibility": "VISIBLE"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "Actions": [],
+            "ColumnHierarchies": [
+              {
+                "DateTimeHierarchy": {
+                  "HierarchyId": "cu-area-date"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "TableVisual": {
+            "VisualId": "6e2d9b4e-969e-4c56-a0d7-a8bcb6134cff",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Last Refreshed"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "TableUnaggregatedFieldWells": {
+                  "Values": [
+                    {
+                      "FieldId": "exec-kpi-last-refreshed-val",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "timestamp"
+                      },
+                      "FormatConfiguration": {
+                        "DateTimeFormatConfiguration": {
+                          "DateTimeFormat": "MMMM D, YYYY [at] HH:mm:ss"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {
+                "RowSort": [
+                  {
+                    "FieldSort": {
+                      "FieldId": "exec-kpi-last-refreshed-val",
+                      "Direction": "DESC"
+                    }
+                  }
+                ]
+              },
+              "TableOptions": {
+                "Orientation": "VERTICAL",
+                "HeaderStyle": {
+                  "Visibility": "HIDDEN",
+                  "FontConfiguration": {
+                    "FontSize": {
+                      "Absolute": "12px"
+                    },
+                    "FontWeight": {
+                      "Name": "BOLD"
+                    }
+                  },
+                  "TextWrap": "NONE",
+                  "VerticalTextAlignment": "MIDDLE",
+                  "BackgroundColor": "#F0F0F0"
+                },
+                "CellStyle": {
+                  "FontConfiguration": {
+                    "FontSize": {
+                      "Absolute": "14px"
+                    }
+                  },
+                  "HorizontalTextAlignment": "LEFT",
+                  "Height": 33
+                }
+              },
+              "FieldOptions": {
+                "SelectedFieldOptions": [
+                  {
+                    "FieldId": "exec-kpi-last-refreshed-val",
+                    "CustomLabel": "Last Refreshed"
+                  }
+                ]
+              },
+              "PaginatedReportOptions": {
+                "VerticalOverflowVisibility": "HIDDEN"
+              }
+            },
+            "Actions": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "db14fb03-ab18-4fad-b8ea-ae0e2aa72572",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Total Invocations"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "CategoricalMeasureField": {
+                      "FieldId": "exec-kpi-inv-val",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "requestid"
+                      },
+                      "AggregationFunction": "COUNT"
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "542a02e4-66e4-4965-88ea-bda342b7d38d",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Total Cost"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "exec-kpi-cost-val",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "totalcost"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "SUM"
+                      },
+                      "FormatConfiguration": {
+                        "FormatConfiguration": {
+                          "CurrencyDisplayFormatConfiguration": {
+                            "SeparatorConfiguration": {
+                              "DecimalSeparator": "DOT",
+                              "ThousandsSeparator": {
+                                "Symbol": "COMMA",
+                                "Visibility": "VISIBLE"
+                              }
+                            },
+                            "Symbol": "USD",
+                            "DecimalPlacesConfiguration": {
+                              "DecimalPlaces": 4
+                            },
+                            "NumberScale": "NONE",
+                            "NegativeValueConfiguration": {
+                              "DisplayMode": "NEGATIVE"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "6627ed7e-8e08-4836-9a33-27bb6da1d61d",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Unique Users"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "CategoricalMeasureField": {
+                      "FieldId": "exec-kpi-users-val",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "resolvedusername"
+                      },
+                      "AggregationFunction": "DISTINCT_COUNT"
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "4ea966cd-ec06-41b8-9c73-3352537d7838",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Avg Latency"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "exec-kpi-latency-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "invocationlatencyavg"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "AVERAGE"
+                      },
+                      "FormatConfiguration": {
+                        "FormatConfiguration": {
+                          "NumberDisplayFormatConfiguration": {
+                            "Suffix": "ms",
+                            "SeparatorConfiguration": {
+                              "DecimalSeparator": "DOT",
+                              "ThousandsSeparator": {
+                                "Symbol": "COMMA",
+                                "Visibility": "VISIBLE"
+                              }
+                            },
+                            "DecimalPlacesConfiguration": {
+                              "DecimalPlaces": 1
+                            },
+                            "NumberScale": "NONE",
+                            "NegativeValueConfiguration": {
+                              "DisplayMode": "NEGATIVE"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "067eee67-1ee0-41da-8b58-97fe01cf7354",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Error Rate"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "exec-kpi-error-rate-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "ErrorRate"
+                      },
+                      "FormatConfiguration": {
+                        "FormatConfiguration": {
+                          "PercentageDisplayFormatConfiguration": {
+                            "SeparatorConfiguration": {
+                              "DecimalSeparator": "DOT",
+                              "ThousandsSeparator": {
+                                "Symbol": "COMMA",
+                                "Visibility": "VISIBLE"
+                              }
+                            },
+                            "DecimalPlacesConfiguration": {
+                              "DecimalPlaces": 1
+                            },
+                            "NegativeValueConfiguration": {
+                              "DisplayMode": "NEGATIVE"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "LineChartVisual": {
+            "VisualId": "fd3ecc0e-d251-4b09-b83c-08ce8b33b0c5",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Daily Invocations & Cost Trend"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "LineChartAggregatedFieldWells": {
+                  "Category": [
+                    {
+                      "DateDimensionField": {
+                        "FieldId": "exec-trend-date",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "timestamp"
+                        },
+                        "DateGranularity": "DAY",
+                        "HierarchyId": "exec-trend-date"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "CategoricalMeasureField": {
+                        "FieldId": "exec-trend-inv",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "requestid"
+                        },
+                        "AggregationFunction": "COUNT"
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "exec-trend-cost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totalcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        }
+                      }
+                    }
+                  ],
+                  "Colors": []
+                }
+              },
+              "SortConfiguration": {},
+              "Type": "LINE",
+              "XAxisDisplayOptions": {
+                "TickLabelOptions": {
+                  "LabelOptions": {
+                    "FontConfiguration": {
+                      "FontColor": "#EEEEEE"
+                    }
+                  }
+                },
+                "AxisLineVisibility": "HIDDEN",
+                "ScrollbarOptions": {
+                  "Visibility": "HIDDEN"
+                }
+              },
+              "XAxisLabelOptions": {
+                "AxisLabelOptions": [
+                  {
+                    "CustomLabel": "Date",
+                    "ApplyTo": {
+                      "FieldId": "exec-trend-date",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "timestamp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "PrimaryYAxisLabelOptions": {
+                "AxisLabelOptions": [
+                  {
+                    "CustomLabel": "Invocations",
+                    "ApplyTo": {
+                      "FieldId": "exec-trend-inv",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "requestid"
+                      }
+                    }
+                  },
+                  {
+                    "CustomLabel": "Total Cost",
+                    "ApplyTo": {
+                      "FieldId": "exec-trend-cost",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "totalcost"
+                      }
+                    }
+                  }
+                ]
+              },
+              "Series": [
+                {
+                  "FieldSeriesItem": {
+                    "FieldId": "exec-trend-cost",
+                    "AxisBinding": "SECONDARY_YAXIS"
+                  }
+                }
+              ],
+              "Legend": {
+                "Visibility": "VISIBLE",
+                "Title": {
+                  "Visibility": "HIDDEN"
+                }
+              },
+              "DataLabels": {
+                "Visibility": "VISIBLE",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "Tooltip": {
+                "TooltipVisibility": "VISIBLE",
+                "SelectedTooltipType": "BASIC",
+                "FieldBasedTooltip": {
+                  "AggregationVisibility": "HIDDEN",
+                  "TooltipTitleType": "PRIMARY_VALUE",
+                  "TooltipFields": [
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "exec-trend-date",
+                        "Visibility": "VISIBLE"
+                      }
+                    },
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "exec-trend-inv",
+                        "Visibility": "VISIBLE"
+                      }
+                    },
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "exec-trend-cost",
+                        "Visibility": "VISIBLE"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "Actions": [
+              {
+                "CustomActionId": "b509e3cb-ac93-4f18-82cc-77b8a6642802",
+                "Name": "Action 1",
+                "Status": "ENABLED",
+                "Trigger": "DATA_POINT_CLICK",
+                "ActionOperations": [
+                  {
+                    "FilterOperation": {
+                      "SelectedFieldsConfiguration": {
+                        "SelectedFieldOptions": "ALL_FIELDS"
+                      },
+                      "TargetVisualsConfiguration": {
+                        "SameSheetTargetVisualConfiguration": {
+                          "TargetVisualOptions": "ALL_VISUALS"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ColumnHierarchies": [
+              {
+                "DateTimeHierarchy": {
+                  "HierarchyId": "exec-trend-date"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PieChartVisual": {
+            "VisualId": "d51cc51d-611b-43f6-bf93-83a193883f8d",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "RichText": "<visual-title>Requests per Model</visual-title>"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "PieChartAggregatedFieldWells": {
+                  "Category": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "exec-donut-model",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "FriendlyModelName"
+                        }
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "CategoricalMeasureField": {
+                        "FieldId": "exec-donut-count",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "requestid"
+                        },
+                        "AggregationFunction": "COUNT"
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {
+                "CategorySort": [
+                  {
+                    "FieldSort": {
+                      "FieldId": "exec-donut-count",
+                      "Direction": "DESC"
+                    }
+                  }
+                ]
+              },
+              "DonutOptions": {
+                "ArcOptions": {
+                  "ArcThickness": "MEDIUM"
+                },
+                "DonutCenterOptions": {
+                  "LabelVisibility": "VISIBLE"
+                }
+              },
+              "CategoryLabelOptions": {
+                "Visibility": "HIDDEN",
+                "SortIconVisibility": "HIDDEN"
+              },
+              "ValueLabelOptions": {
+                "Visibility": "VISIBLE",
+                "AxisLabelOptions": [
+                  {
+                    "FontConfiguration": {
+                      "FontWeight": {
+                        "Name": "NORMAL"
+                      }
+                    },
+                    "CustomLabel": "Requests",
+                    "ApplyTo": {
+                      "FieldId": "exec-donut-count",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "requestid"
+                      }
+                    }
+                  }
+                ]
+              },
+              "Legend": {
+                "Visibility": "VISIBLE",
+                "Title": {
+                  "Visibility": "VISIBLE",
+                  "FontConfiguration": {
+                    "FontDecoration": "NONE",
+                    "FontColor": "#EEEEEE",
+                    "FontWeight": {
+                      "Name": "BOLD"
+                    }
+                  },
+                  "CustomLabel": "Models"
+                },
+                "Width": "301px",
+                "ValueFontConfiguration": {
+                  "FontSize": {
+                    "Absolute": "11px"
+                  },
+                  "FontDecoration": "NONE",
+                  "FontStyle": "NORMAL"
+                }
+              },
+              "DataLabels": {
+                "Visibility": "VISIBLE",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "Tooltip": {
+                "TooltipVisibility": "VISIBLE",
+                "SelectedTooltipType": "DETAILED",
+                "FieldBasedTooltip": {
+                  "AggregationVisibility": "HIDDEN",
+                  "TooltipTitleType": "NONE",
+                  "TooltipFields": [
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "exec-donut-model",
+                        "Visibility": "VISIBLE"
+                      }
+                    },
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "exec-donut-count",
+                        "Visibility": "VISIBLE"
+                      }
+                    }
+                  ]
+                }
+              },
+              "VisualPalette": {
+                "ChartColor": "#1F77B4"
+              }
+            },
+            "Actions": [
+              {
+                "CustomActionId": "exec-model-filter-action",
+                "Name": "Filter by Model",
+                "Status": "ENABLED",
+                "Trigger": "DATA_POINT_CLICK",
+                "ActionOperations": [
+                  {
+                    "FilterOperation": {
+                      "SelectedFieldsConfiguration": {
+                        "SelectedFields": [
+                          "exec-donut-model"
+                        ]
+                      },
+                      "TargetVisualsConfiguration": {
+                        "SameSheetTargetVisualConfiguration": {
+                          "TargetVisualOptions": "ALL_VISUALS"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "TableVisual": {
+            "VisualId": "f27d89c7-8432-450f-b7f2-07d86d41e201",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "RichText": "<visual-title>\n  <inline font-size=\"14px\">Top 10 Users</inline>\n</visual-title>"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "TableAggregatedFieldWells": {
+                  "GroupBy": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "exec-table-user",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "resolvedusername"
+                        }
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "CategoricalMeasureField": {
+                        "FieldId": "exec-table-inv",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "requestid"
+                        },
+                        "AggregationFunction": "COUNT"
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "calc_total_tokens.3.1772222521769",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totaltokens"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        }
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "exec-table-cost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totalcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "CurrencyDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "Symbol": "USD",
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 4
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {
+                "RowSort": [
+                  {
+                    "FieldSort": {
+                      "FieldId": "exec-table-cost",
+                      "Direction": "DESC"
+                    }
+                  }
+                ]
+              },
+              "TableOptions": {
+                "HeaderStyle": {
+                  "Visibility": "VISIBLE",
+                  "FontConfiguration": {
+                    "FontWeight": {
+                      "Name": "BOLD"
+                    }
+                  },
+                  "TextWrap": "NONE",
+                  "VerticalTextAlignment": "MIDDLE",
+                  "BackgroundColor": "#DDDDDD"
+                },
+                "RowAlternateColorOptions": {
+                  "Status": "ENABLED",
+                  "RowAlternateColors": [
+                    "#E8E8E8"
+                  ],
+                  "UsePrimaryBackgroundColor": "ENABLED"
+                },
+                "CellStyle": {
+                  "Height": 25,
+                  "BackgroundColor": "#EEEEEE"
+                }
+              },
+              "TotalOptions": {
+                "TotalsVisibility": "VISIBLE",
+                "Placement": "END"
+              },
+              "FieldOptions": {
+                "SelectedFieldOptions": [
+                  {
+                    "FieldId": "exec-table-user",
+                    "Width": "467px",
+                    "CustomLabel": "User"
+                  },
+                  {
+                    "FieldId": "exec-table-inv",
+                    "CustomLabel": "Invocations"
+                  },
+                  {
+                    "FieldId": "calc_total_tokens.3.1772222521769",
+                    "CustomLabel": "Total Tokens"
+                  },
+                  {
+                    "FieldId": "exec-table-cost",
+                    "CustomLabel": "Total Cost"
+                  }
+                ],
+                "Order": [
+                  "exec-table-user",
+                  "exec-table-inv",
+                  "calc_total_tokens.3.1772222521769",
+                  "exec-table-cost"
+                ]
+              },
+              "PaginatedReportOptions": {
+                "VerticalOverflowVisibility": "HIDDEN",
+                "OverflowColumnHeaderVisibility": "HIDDEN"
+              }
+            },
+            "ConditionalFormatting": {
+              "ConditionalFormattingOptions": [
+                {
+                  "Cell": {
+                    "FieldId": "exec-table-cost",
+                    "TextFormat": {
+                      "BackgroundColor": {
+                        "Solid": {
+                          "Expression": "SUM({totalcost}) >= 100",
+                          "Color": "#DE3B00"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "CustomActionId": "8670ec8f-d462-43c9-b6d1-70cbf69d6ab6",
+                "Name": "Filter Action",
+                "Status": "ENABLED",
+                "Trigger": "DATA_POINT_CLICK",
+                "ActionOperations": [
+                  {
+                    "FilterOperation": {
+                      "SelectedFieldsConfiguration": {
+                        "SelectedFieldOptions": "ALL_FIELDS"
+                      },
+                      "TargetVisualsConfiguration": {
+                        "SameSheetTargetVisualConfiguration": {
+                          "TargetVisualOptions": "ALL_VISUALS"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "6812f45e-1d1f-46c1-881c-10fe6c2201ab",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "RichText": "<visual-title>Total Tokens</visual-title>"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "calc_total_tokens.0.1772221949467",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "totaltokens"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "SUM"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {},
+              "KPIOptions": {
+                "Comparison": {
+                  "ComparisonMethod": "PERCENT_DIFFERENCE"
+                },
+                "PrimaryValueDisplayType": "ACTUAL",
+                "SecondaryValueFontConfiguration": {
+                  "FontSize": {
+                    "Relative": "EXTRA_LARGE"
+                  }
+                },
+                "Sparkline": {
+                  "Visibility": "VISIBLE",
+                  "Type": "AREA"
+                },
+                "VisualLayoutOptions": {
+                  "StandardLayout": {
+                    "Type": "VERTICAL"
+                  }
+                }
+              }
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "72ec97cc-0ed1-416f-a9b9-af9c2eddef34",
+            "Title": {
+              "Visibility": "VISIBLE"
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "191143a1-3c1c-4e60-903d-e2a340152bfb.1.1772224115247",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "Estimated Novels Generated"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "SUM"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {},
+              "KPIOptions": {
+                "Comparison": {
+                  "ComparisonMethod": "PERCENT_DIFFERENCE"
+                },
+                "PrimaryValueDisplayType": "ACTUAL",
+                "SecondaryValueFontConfiguration": {
+                  "FontSize": {
+                    "Relative": "EXTRA_LARGE"
+                  }
+                },
+                "Sparkline": {
+                  "Visibility": "VISIBLE",
+                  "Type": "AREA"
+                },
+                "VisualLayoutOptions": {
+                  "StandardLayout": {
+                    "Type": "VERTICAL"
+                  }
+                }
+              }
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "b303d495-ece0-4df1-afef-523b5c60ff7b",
+            "Title": {
+              "Visibility": "VISIBLE"
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "a7224145-42ed-4b8f-84b3-1dea40fbd0aa.0.1772224353391",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "Estimated Words Generated "
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "SUM"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {},
+              "KPIOptions": {
+                "Comparison": {
+                  "ComparisonMethod": "PERCENT_DIFFERENCE"
+                },
+                "PrimaryValueDisplayType": "ACTUAL",
+                "SecondaryValueFontConfiguration": {
+                  "FontSize": {
+                    "Relative": "EXTRA_LARGE"
+                  }
+                },
+                "Sparkline": {
+                  "Visibility": "VISIBLE",
+                  "Type": "AREA"
+                },
+                "VisualLayoutOptions": {
+                  "StandardLayout": {
+                    "Type": "VERTICAL"
+                  }
+                }
+              }
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        }
+      ],
+      "Layouts": [
+        {
+          "Configuration": {
+            "GridLayout": {
+              "Elements": [
+                {
+                  "ElementId": "6627ed7e-8e08-4836-9a33-27bb6da1d61d",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 4,
+                  "RowIndex": 0,
+                  "RowSpan": 2
+                },
+                {
+                  "ElementId": "b303d495-ece0-4df1-afef-523b5c60ff7b",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 4,
+                  "ColumnSpan": 7,
+                  "RowIndex": 0,
+                  "RowSpan": 2
+                },
+                {
+                  "ElementId": "72ec97cc-0ed1-416f-a9b9-af9c2eddef34",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 11,
+                  "ColumnSpan": 6,
+                  "RowIndex": 0,
+                  "RowSpan": 2
+                },
+                {
+                  "ElementId": "6e2d9b4e-969e-4c56-a0d7-a8bcb6134cff",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 17,
+                  "ColumnSpan": 7,
+                  "RowIndex": 0,
+                  "RowSpan": 2
+                },
+                {
+                  "ElementId": "d51cc51d-611b-43f6-bf93-83a193883f8d",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 24,
+                  "RowIndex": 2,
+                  "RowSpan": 11
+                },
+                {
+                  "ElementId": "542a02e4-66e4-4965-88ea-bda342b7d38d",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 7,
+                  "RowIndex": 13,
+                  "RowSpan": 3
+                },
+                {
+                  "ElementId": "f27d89c7-8432-450f-b7f2-07d86d41e201",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 7,
+                  "ColumnSpan": 17,
+                  "RowIndex": 13,
+                  "RowSpan": 14
+                },
+                {
+                  "ElementId": "6812f45e-1d1f-46c1-881c-10fe6c2201ab",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 7,
+                  "RowIndex": 16,
+                  "RowSpan": 4
+                },
+                {
+                  "ElementId": "db14fb03-ab18-4fad-b8ea-ae0e2aa72572",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 7,
+                  "RowIndex": 20,
+                  "RowSpan": 3
+                },
+                {
+                  "ElementId": "4ea966cd-ec06-41b8-9c73-3352537d7838",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 7,
+                  "RowIndex": 23,
+                  "RowSpan": 2
+                },
+                {
+                  "ElementId": "067eee67-1ee0-41da-8b58-97fe01cf7354",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 7,
+                  "RowIndex": 25,
+                  "RowSpan": 2
+                },
+                {
+                  "ElementId": "fd3ecc0e-d251-4b09-b83c-08ce8b33b0c5",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 24,
+                  "RowIndex": 27,
+                  "RowSpan": 11
+                },
+                {
+                  "ElementId": "1dd51597-cb9b-476d-a385-52ac7c3e7bbc",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 24,
+                  "RowIndex": 38,
+                  "RowSpan": 12
+                }
+              ],
+              "CanvasSizeOptions": {
+                "ScreenCanvasSizeOptions": {
+                  "ResizeOption": "FIXED",
+                  "OptimizedViewPortWidth": "1600px"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "ContentType": "INTERACTIVE"
+    },
+    {
+      "SheetId": "8a4f4c11-0889-4fcf-b773-fda2f6c30825",
+      "Name": "Cost & Usage",
+      "ParameterControls": [
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "cu-date-start-control",
+            "Title": "Start Date",
+            "SourceParameterName": "DateRangeStart",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD"
+            }
+          }
+        },
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "cu-date-end-control",
+            "Title": "End Date",
+            "SourceParameterName": "DateRangeEnd",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD"
+            }
+          }
+        }
+      ],
+      "Visuals": [
+        {
+          "PieChartVisual": {
+            "VisualId": "f3ee46e0-4d05-4fb6-acb2-4b28d7338801",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "RichText": "<visual-title>\n  <inline font-size=\"14px\">Costs by Model</inline>\n</visual-title>"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "PieChartAggregatedFieldWells": {
+                  "Category": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "exec-cost-donut-model",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "FriendlyModelName"
+                        }
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "exec-cost-donut-cost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totalcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {},
+              "DonutOptions": {
+                "ArcOptions": {
+                  "ArcThickness": "MEDIUM"
+                },
+                "DonutCenterOptions": {
+                  "LabelVisibility": "VISIBLE"
+                }
+              },
+              "CategoryLabelOptions": {
+                "Visibility": "HIDDEN"
+              },
+              "ValueLabelOptions": {
+                "Visibility": "HIDDEN"
+              },
+              "Legend": {
+                "Visibility": "VISIBLE",
+                "Title": {
+                  "Visibility": "VISIBLE",
+                  "CustomLabel": "Model Name"
+                },
+                "Width": "282px"
+              },
+              "DataLabels": {
+                "Visibility": "VISIBLE",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "Tooltip": {
+                "TooltipVisibility": "VISIBLE",
+                "SelectedTooltipType": "DETAILED",
+                "FieldBasedTooltip": {
+                  "AggregationVisibility": "HIDDEN",
+                  "TooltipTitleType": "NONE",
+                  "TooltipFields": []
+                }
+              },
+              "VisualPalette": {
+                "ChartColor": "#1F77B4"
+              }
+            },
+            "Actions": [
+              {
+                "CustomActionId": "83852b27-2c6d-4a24-bff5-bc33742b10f2",
+                "Name": "Filter by Model",
+                "Status": "ENABLED",
+                "Trigger": "DATA_POINT_CLICK",
+                "ActionOperations": [
+                  {
+                    "FilterOperation": {
+                      "SelectedFieldsConfiguration": {
+                        "SelectedFields": [
+                          "exec-cost-donut-model"
+                        ]
+                      },
+                      "TargetVisualsConfiguration": {
+                        "SameSheetTargetVisualConfiguration": {
+                          "TargetVisualOptions": "ALL_VISUALS"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "BarChartVisual": {
+            "VisualId": "19ab78cb-2ad4-4d41-a730-d235fd3369fe",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Cost by Model (Input vs Output)"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "BarChartAggregatedFieldWells": {
+                  "Category": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "cu-bar-model",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "FriendlyModelName"
+                        }
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-bar-inputcost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "inputcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "CurrencyDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "Symbol": "USD",
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 2
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-bar-outputcost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "outputcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "CurrencyDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "Symbol": "USD",
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 2
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "Colors": []
+                }
+              },
+              "SortConfiguration": {},
+              "Orientation": "HORIZONTAL",
+              "BarsArrangement": "STACKED",
+              "VisualPalette": {
+                "ColorMap": [
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "0"
+                    },
+                    "Color": "#1F77B4"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "1"
+                    },
+                    "Color": "#FF7F0E"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "2"
+                    },
+                    "Color": "#2CA02C"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "3"
+                    },
+                    "Color": "#D62728"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "4"
+                    },
+                    "Color": "#9467BD"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "5"
+                    },
+                    "Color": "#8C564B"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "6"
+                    },
+                    "Color": "#E377C2"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "7"
+                    },
+                    "Color": "#7F7F7F"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "8"
+                    },
+                    "Color": "#BCBD22"
+                  },
+                  {
+                    "Element": {
+                      "FieldId": "cu-bar-model",
+                      "FieldValue": "9"
+                    },
+                    "Color": "#17BECF"
+                  }
+                ]
+              },
+              "CategoryAxis": {
+                "ScrollbarOptions": {
+                  "Visibility": "HIDDEN",
+                  "VisibleRange": {
+                    "PercentRange": {
+                      "From": 9.090909090909092,
+                      "To": 100.0
+                    }
+                  }
+                }
+              },
+              "CategoryLabelOptions": {
+                "Visibility": "VISIBLE",
+                "AxisLabelOptions": [
+                  {
+                    "CustomLabel": "Model Name",
+                    "ApplyTo": {
+                      "FieldId": "cu-bar-model",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "FriendlyModelName"
+                      }
+                    }
+                  }
+                ]
+              },
+              "ValueAxis": {
+                "GridLineVisibility": "VISIBLE"
+              },
+              "ColorLabelOptions": {
+                "Visibility": "VISIBLE"
+              },
+              "Legend": {
+                "Visibility": "VISIBLE"
+              },
+              "DataLabels": {
+                "Visibility": "VISIBLE",
+                "Overlap": "DISABLE_OVERLAP"
+              }
+            },
+            "Actions": [
+              {
+                "CustomActionId": "cu-model-filter-action",
+                "Name": "Filter by Model",
+                "Status": "ENABLED",
+                "Trigger": "DATA_POINT_CLICK",
+                "ActionOperations": [
+                  {
+                    "FilterOperation": {
+                      "SelectedFieldsConfiguration": {
+                        "SelectedFields": [
+                          "cu-bar-model"
+                        ]
+                      },
+                      "TargetVisualsConfiguration": {
+                        "SameSheetTargetVisualConfiguration": {
+                          "TargetVisualOptions": "ALL_VISUALS"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "HeatMapVisual": {
+            "VisualId": "c340bd81-8dd1-4e97-a76f-4f4f8b9310d3",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Cost Heat Map (Model \u00d7 Day)"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "HeatMapAggregatedFieldWells": {
+                  "Rows": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "cu-heatmap-model",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "FriendlyModelName"
+                        }
+                      }
+                    }
+                  ],
+                  "Columns": [
+                    {
+                      "DateDimensionField": {
+                        "FieldId": "cu-heatmap-day",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "timestamp"
+                        },
+                        "DateGranularity": "DAY",
+                        "HierarchyId": "cu-heatmap-day"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-heatmap-cost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totalcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {},
+              "RowLabelOptions": {
+                "Visibility": "VISIBLE",
+                "AxisLabelOptions": [
+                  {
+                    "CustomLabel": "Model Name",
+                    "ApplyTo": {
+                      "FieldId": "cu-heatmap-model",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "FriendlyModelName"
+                      }
+                    }
+                  }
+                ]
+              },
+              "ColumnLabelOptions": {
+                "Visibility": "VISIBLE",
+                "AxisLabelOptions": [
+                  {
+                    "CustomLabel": "Date",
+                    "ApplyTo": {
+                      "FieldId": "cu-heatmap-day",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "timestamp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "ColorScale": {
+                "Colors": [
+                  {
+                    "Color": "#2CAD00"
+                  },
+                  {
+                    "Color": "#FFFFFF"
+                  },
+                  {
+                    "Color": "#DE3B00"
+                  }
+                ],
+                "ColorFillType": "GRADIENT",
+                "NullValueColor": {
+                  "Color": "#F0F0F0"
+                }
+              },
+              "Legend": {
+                "Visibility": "VISIBLE"
+              },
+              "DataLabels": {
+                "Visibility": "HIDDEN",
+                "Overlap": "DISABLE_OVERLAP"
+              }
+            },
+            "ColumnHierarchies": [
+              {
+                "DateTimeHierarchy": {
+                  "HierarchyId": "cu-heatmap-day"
+                }
+              }
+            ],
+            "Actions": []
+          }
+        },
+        {
+          "PieChartVisual": {
+            "VisualId": "5e2a1bb7-89b7-41dd-9814-2feb338ddada",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "RichText": "<visual-title>Costs by User</visual-title>"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "PieChartAggregatedFieldWells": {
+                  "Category": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "cu-donut-user",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "resolvedusername"
+                        }
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-donut-cost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totalcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "CurrencyDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "Symbol": "USD",
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 2
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {},
+              "DonutOptions": {
+                "ArcOptions": {
+                  "ArcThickness": "MEDIUM"
+                },
+                "DonutCenterOptions": {
+                  "LabelVisibility": "VISIBLE"
+                }
+              },
+              "CategoryLabelOptions": {
+                "Visibility": "HIDDEN"
+              },
+              "ValueLabelOptions": {
+                "Visibility": "HIDDEN"
+              },
+              "Legend": {
+                "Visibility": "VISIBLE",
+                "Title": {
+                  "Visibility": "VISIBLE",
+                  "CustomLabel": "Users"
+                },
+                "Width": "285px"
+              },
+              "DataLabels": {
+                "Visibility": "VISIBLE",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "Tooltip": {
+                "TooltipVisibility": "VISIBLE",
+                "SelectedTooltipType": "DETAILED",
+                "FieldBasedTooltip": {
+                  "AggregationVisibility": "VISIBLE",
+                  "TooltipTitleType": "NONE",
+                  "TooltipFields": [
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "cu-donut-user",
+                        "Visibility": "VISIBLE"
+                      }
+                    },
+                    {
+                      "FieldTooltipItem": {
+                        "FieldId": "cu-donut-cost",
+                        "Visibility": "VISIBLE"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "PivotTableVisual": {
+            "VisualId": "2848c306-95a3-47c4-89c0-33e054de1893",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "RichText": "<visual-title>\n  <inline font-size=\"14px\">User Activity</inline>\n</visual-title>"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "PivotTableAggregatedFieldWells": {
+                  "Rows": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "cu-pivot-user",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "resolvedusername"
+                        }
+                      }
+                    }
+                  ],
+                  "Columns": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "cu-pivot-model",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "FriendlyModelName"
+                        }
+                      }
+                    }
+                  ],
+                  "Values": [
+                    {
+                      "CategoricalMeasureField": {
+                        "FieldId": "cu-pivot-invocations",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "requestid"
+                        },
+                        "AggregationFunction": "COUNT"
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-pivot-inputtokens",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "inputtokens"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "NumberDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 1
+                              },
+                              "NumberScale": "AUTO",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-pivot-outputtokens",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "outputtokens"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "NumberDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 1
+                              },
+                              "NumberScale": "AUTO",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "cu-pivot-cost",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totalcost"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "CurrencyDisplayFormatConfiguration": {
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "Symbol": "USD",
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 2
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {
+                "FieldSortOptions": []
+              },
+              "TableOptions": {
+                "MetricPlacement": "ROW",
+                "SingleMetricVisibility": "HIDDEN",
+                "ColumnNamesVisibility": "VISIBLE",
+                "ToggleButtonsVisibility": "VISIBLE",
+                "ColumnHeaderStyle": {
+                  "FontConfiguration": {
+                    "FontWeight": {
+                      "Name": "BOLD"
+                    }
+                  },
+                  "TextWrap": "NONE",
+                  "VerticalTextAlignment": "MIDDLE",
+                  "BackgroundColor": "#F0F0F0"
+                },
+                "RowHeaderStyle": {
+                  "FontConfiguration": {
+                    "FontWeight": {
+                      "Name": "BOLD"
+                    }
+                  },
+                  "VerticalTextAlignment": "MIDDLE",
+                  "BackgroundColor": "#F0F0F0"
+                },
+                "CellStyle": {},
+                "RowFieldNamesStyle": {
+                  "FontConfiguration": {
+                    "FontWeight": {
+                      "Name": "BOLD"
+                    }
+                  },
+                  "TextWrap": "NONE",
+                  "VerticalTextAlignment": "MIDDLE",
+                  "BackgroundColor": "#F0F0F0"
+                },
+                "RowAlternateColorOptions": {
+                  "Status": "ENABLED",
+                  "RowAlternateColors": [
+                    "#F9F9F9"
+                  ]
+                }
+              },
+              "TotalOptions": {
+                "ColumnTotalOptions": {
+                  "TotalsVisibility": "VISIBLE",
+                  "Placement": "END",
+                  "TotalCellStyle": {
+                    "FontConfiguration": {
+                      "FontWeight": {
+                        "Name": "BOLD"
+                      }
+                    },
+                    "BackgroundColor": "#F0F0F0"
+                  },
+                  "ValueCellStyle": {},
+                  "MetricHeaderCellStyle": {
+                    "FontConfiguration": {
+                      "FontWeight": {
+                        "Name": "BOLD"
+                      }
+                    },
+                    "TextWrap": "NONE",
+                    "VerticalTextAlignment": "MIDDLE",
+                    "BackgroundColor": "#F0F0F0"
+                  }
+                }
+              },
+              "FieldOptions": {
+                "SelectedFieldOptions": [
+                  {
+                    "FieldId": "cu-pivot-user",
+                    "CustomLabel": "User",
+                    "Visibility": "VISIBLE"
+                  },
+                  {
+                    "FieldId": "cu-pivot-model",
+                    "CustomLabel": "Model",
+                    "Visibility": "VISIBLE"
+                  },
+                  {
+                    "FieldId": "cu-pivot-invocations",
+                    "CustomLabel": "Invocations",
+                    "Visibility": "VISIBLE"
+                  },
+                  {
+                    "FieldId": "cu-pivot-inputtokens",
+                    "CustomLabel": "Input Tokens",
+                    "Visibility": "VISIBLE"
+                  },
+                  {
+                    "FieldId": "cu-pivot-outputtokens",
+                    "CustomLabel": "Output Tokens",
+                    "Visibility": "VISIBLE"
+                  },
+                  {
+                    "FieldId": "cu-pivot-cost",
+                    "CustomLabel": "Total Cost",
+                    "Visibility": "VISIBLE"
+                  }
+                ]
+              }
+            },
+            "Actions": []
+          }
+        }
+      ],
+      "Layouts": [
+        {
+          "Configuration": {
+            "GridLayout": {
+              "Elements": [
+                {
+                  "ElementId": "19ab78cb-2ad4-4d41-a730-d235fd3369fe",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 18,
+                  "RowIndex": 0,
+                  "RowSpan": 12
+                },
+                {
+                  "ElementId": "c340bd81-8dd1-4e97-a76f-4f4f8b9310d3",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 18,
+                  "ColumnSpan": 18,
+                  "RowIndex": 0,
+                  "RowSpan": 12
+                },
+                {
+                  "ElementId": "f3ee46e0-4d05-4fb6-acb2-4b28d7338801",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 18,
+                  "RowIndex": 12,
+                  "RowSpan": 11
+                },
+                {
+                  "ElementId": "5e2a1bb7-89b7-41dd-9814-2feb338ddada",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 18,
+                  "ColumnSpan": 18,
+                  "RowIndex": 12,
+                  "RowSpan": 11
+                },
+                {
+                  "ElementId": "2848c306-95a3-47c4-89c0-33e054de1893",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 36,
+                  "RowIndex": 23,
+                  "RowSpan": 11
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "ContentType": "INTERACTIVE"
+    },
+    {
+      "SheetId": "8c8d6a1e-c35e-45dc-bdde-fbd8045d48ca",
+      "Name": "Performance",
+      "ParameterControls": [
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "perf-date-start-control",
+            "Title": "Start Date",
+            "SourceParameterName": "DateRangeStart",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD"
+            }
+          }
+        },
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "perf-date-end-control",
+            "Title": "End Date",
+            "SourceParameterName": "DateRangeEnd",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD"
+            }
+          }
+        }
+      ],
+      "FilterControls": [
+        {
+          "Dropdown": {
+            "FilterControlId": "perf-model-filter-control",
+            "Title": "Model",
+            "SourceFilterId": "perf-model-filter",
+            "DisplayOptions": {
+              "SelectAllOptions": {
+                "Visibility": "VISIBLE"
+              },
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {}
+              }
+            },
+            "Type": "SINGLE_SELECT"
+          }
+        }
+      ],
+      "Visuals": [
+        {
+          "KPIVisual": {
+            "VisualId": "3a507f6a-34ae-476a-9315-5cc26303b810",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Avg Latency"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "perf-kpi-avg-lat-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "invocationlatencyavg"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "AVERAGE"
+                      },
+                      "FormatConfiguration": {
+                        "FormatConfiguration": {
+                          "NumberDisplayFormatConfiguration": {
+                            "Suffix": "ms",
+                            "SeparatorConfiguration": {
+                              "DecimalSeparator": "DOT",
+                              "ThousandsSeparator": {
+                                "Symbol": "COMMA",
+                                "Visibility": "VISIBLE"
+                              }
+                            },
+                            "DecimalPlacesConfiguration": {
+                              "DecimalPlaces": 1
+                            },
+                            "NumberScale": "NONE",
+                            "NegativeValueConfiguration": {
+                              "DisplayMode": "NEGATIVE"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "e9fa0a22-fd66-4171-bb87-7a092925395d",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "P99 Latency"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "perf-kpi-p99-lat-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "invocationlatencyp99"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "AVERAGE"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "da3d098f-096a-4a10-8ebd-76688c762bea",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Error Rate"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "perf-kpi-error-rate-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "ErrorRate"
+                      },
+                      "FormatConfiguration": {
+                        "FormatConfiguration": {
+                          "PercentageDisplayFormatConfiguration": {
+                            "SeparatorConfiguration": {
+                              "DecimalSeparator": "DOT",
+                              "ThousandsSeparator": {
+                                "Symbol": "COMMA",
+                                "Visibility": "VISIBLE"
+                              }
+                            },
+                            "DecimalPlacesConfiguration": {
+                              "DecimalPlaces": 1
+                            },
+                            "NegativeValueConfiguration": {
+                              "DisplayMode": "NEGATIVE"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "ComboChartVisual": {
+            "VisualId": "72ab370e-eeea-4bf2-9ce6-34733abb737f",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Latency by Model (Avg vs P99)"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "ComboChartAggregatedFieldWells": {
+                  "Category": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "perf-combo-model",
+                        "Column": {
+                          "DataSetIdentifier": "Metrics",
+                          "ColumnName": "FriendlyModelName"
+                        }
+                      }
+                    }
+                  ],
+                  "BarValues": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "perf-combo-avg-lat",
+                        "Column": {
+                          "DataSetIdentifier": "Metrics",
+                          "ColumnName": "invocationlatencyavg"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "AVERAGE"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "NumberDisplayFormatConfiguration": {
+                              "Suffix": "ms",
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 1
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "Colors": [],
+                  "LineValues": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "perf-combo-p99-lat",
+                        "Column": {
+                          "DataSetIdentifier": "Metrics",
+                          "ColumnName": "invocationlatencyp99"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "AVERAGE"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "NumberDisplayFormatConfiguration": {
+                              "Suffix": "ms",
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 1
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "SortConfiguration": {},
+              "BarsArrangement": "CLUSTERED",
+              "Legend": {
+                "Visibility": "VISIBLE"
+              },
+              "BarDataLabels": {
+                "Visibility": "HIDDEN",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "LineDataLabels": {
+                "Visibility": "HIDDEN",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "VisualPalette": {
+                "ChartColor": "#1F77B4"
+              }
+            },
+            "Actions": [
+              {
+                "CustomActionId": "perf-model-filter-action",
+                "Name": "Filter by Model",
+                "Status": "ENABLED",
+                "Trigger": "DATA_POINT_CLICK",
+                "ActionOperations": [
+                  {
+                    "FilterOperation": {
+                      "SelectedFieldsConfiguration": {
+                        "SelectedFields": [
+                          "perf-combo-model"
+                        ]
+                      },
+                      "TargetVisualsConfiguration": {
+                        "SameSheetTargetVisualConfiguration": {
+                          "TargetVisualOptions": "ALL_VISUALS"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "ScatterPlotVisual": {
+            "VisualId": "886c11c7-5a76-43f3-92df-0215d5f4939a",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Latency vs Token Count by Model"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "ScatterPlotCategoricallyAggregatedFieldWells": {
+                  "XAxis": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "perf-scatter-x-lat",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "latencyms"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "AVERAGE"
+                        },
+                        "FormatConfiguration": {
+                          "FormatConfiguration": {
+                            "NumberDisplayFormatConfiguration": {
+                              "Suffix": "ms",
+                              "SeparatorConfiguration": {
+                                "DecimalSeparator": "DOT",
+                                "ThousandsSeparator": {
+                                  "Symbol": "COMMA",
+                                  "Visibility": "VISIBLE"
+                                }
+                              },
+                              "DecimalPlacesConfiguration": {
+                                "DecimalPlaces": 1
+                              },
+                              "NumberScale": "NONE",
+                              "NegativeValueConfiguration": {
+                                "DisplayMode": "NEGATIVE"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "YAxis": [
+                    {
+                      "NumericalMeasureField": {
+                        "FieldId": "perf-scatter-y-tokens",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "totaltokens"
+                        },
+                        "AggregationFunction": {
+                          "SimpleNumericalAggregation": "SUM"
+                        }
+                      }
+                    }
+                  ],
+                  "Category": [
+                    {
+                      "CategoricalDimensionField": {
+                        "FieldId": "perf-scatter-model",
+                        "Column": {
+                          "DataSetIdentifier": "InvocationLogs",
+                          "ColumnName": "FriendlyModelName"
+                        }
+                      }
+                    }
+                  ],
+                  "Size": [],
+                  "Label": []
+                }
+              },
+              "Legend": {
+                "Visibility": "VISIBLE",
+                "Width": "285px"
+              },
+              "DataLabels": {
+                "Visibility": "HIDDEN",
+                "Overlap": "DISABLE_OVERLAP"
+              },
+              "VisualPalette": {
+                "ChartColor": "#1F77B4"
+              }
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        }
+      ],
+      "Layouts": [
+        {
+          "Configuration": {
+            "GridLayout": {
+              "Elements": [
+                {
+                  "ElementId": "72ab370e-eeea-4bf2-9ce6-34733abb737f",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 23,
+                  "RowIndex": 0,
+                  "RowSpan": 12
+                },
+                {
+                  "ElementId": "3a507f6a-34ae-476a-9315-5cc26303b810",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 12,
+                  "RowIndex": 12,
+                  "RowSpan": 4
+                },
+                {
+                  "ElementId": "e9fa0a22-fd66-4171-bb87-7a092925395d",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 12,
+                  "ColumnSpan": 11,
+                  "RowIndex": 12,
+                  "RowSpan": 9
+                },
+                {
+                  "ElementId": "da3d098f-096a-4a10-8ebd-76688c762bea",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 12,
+                  "RowIndex": 16,
+                  "RowSpan": 5
+                },
+                {
+                  "ElementId": "886c11c7-5a76-43f3-92df-0215d5f4939a",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 23,
+                  "RowIndex": 21,
+                  "RowSpan": 12
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "ContentType": "INTERACTIVE"
+    },
+    {
+      "SheetId": "5078c05e-89b6-482f-aa76-541e3e8e33b7",
+      "Name": "Service Quota Prep",
+      "ParameterControls": [
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "sq-time-start-control",
+            "Title": "Start Time",
+            "SourceParameterName": "SqTimeRangeStart",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD HH:mm"
+            }
+          }
+        },
+        {
+          "DateTimePicker": {
+            "ParameterControlId": "sq-time-end-control",
+            "Title": "End Time",
+            "SourceParameterName": "SqTimeRangeEnd",
+            "DisplayOptions": {
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {
+                  "FontSize": {
+                    "Relative": "MEDIUM"
+                  }
+                }
+              },
+              "DateTimeFormat": "YYYY/MM/DD HH:mm"
+            }
+          }
+        }
+      ],
+      "Visuals": [
+        {
+          "KPIVisual": {
+            "VisualId": "558d6fae-770a-4754-afeb-692d8dc4e81e",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Steady State TPM"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "sq-steady-tpm-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "invocationcount"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "AVERAGE"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "24814a29-a1ac-42d0-8bda-0318b052e69b",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Steady State RPM"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "sq-steady-rpm-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "invocationcount"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "AVERAGE"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "ff3cb5c2-fbec-40bb-abef-f4bf5299b9e1",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Peak State TPM"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "sq-peak-tpm-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "invocationcount"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "MAX"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "ed60b3ec-de80-4061-a398-af45f7dbc3a2",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Peak State RPM"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "sq-peak-rpm-val",
+                      "Column": {
+                        "DataSetIdentifier": "Metrics",
+                        "ColumnName": "invocationcount"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "MAX"
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "717ebc4e-e4e0-456c-9438-fb5c27c2f7ac",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Avg Input Tokens"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "sq-avg-input-tokens-val",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "inputtokens"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "AVERAGE"
+                      },
+                      "FormatConfiguration": {
+                        "FormatConfiguration": {
+                          "NumberDisplayFormatConfiguration": {
+                            "DecimalPlacesConfiguration": {
+                              "DecimalPlaces": 0
+                            },
+                            "NullValueFormatConfiguration": {
+                              "NullString": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        },
+        {
+          "KPIVisual": {
+            "VisualId": "0f49b823-fcc8-429e-9cbc-9a038a23ccd1",
+            "Title": {
+              "Visibility": "VISIBLE",
+              "FormatText": {
+                "PlainText": "Avg Output Tokens"
+              }
+            },
+            "Subtitle": {
+              "Visibility": "VISIBLE"
+            },
+            "ChartConfiguration": {
+              "FieldWells": {
+                "Values": [
+                  {
+                    "NumericalMeasureField": {
+                      "FieldId": "sq-avg-output-tokens-val",
+                      "Column": {
+                        "DataSetIdentifier": "InvocationLogs",
+                        "ColumnName": "outputtokens"
+                      },
+                      "AggregationFunction": {
+                        "SimpleNumericalAggregation": "AVERAGE"
+                      },
+                      "FormatConfiguration": {
+                        "FormatConfiguration": {
+                          "NumberDisplayFormatConfiguration": {
+                            "DecimalPlacesConfiguration": {
+                              "DecimalPlaces": 0
+                            },
+                            "NullValueFormatConfiguration": {
+                              "NullString": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "TargetValues": [],
+                "TrendGroups": []
+              },
+              "SortConfiguration": {}
+            },
+            "Actions": [],
+            "ColumnHierarchies": []
+          }
+        }
+      ],
+      "Layouts": [
+        {
+          "Configuration": {
+            "GridLayout": {
+              "Elements": [
+                {
+                  "ElementId": "717ebc4e-e4e0-456c-9438-fb5c27c2f7ac",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 9,
+                  "RowIndex": 0,
+                  "RowSpan": 4
+                },
+                {
+                  "ElementId": "0f49b823-fcc8-429e-9cbc-9a038a23ccd1",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 9,
+                  "ColumnSpan": 9,
+                  "RowIndex": 0,
+                  "RowSpan": 4
+                },
+                {
+                  "ElementId": "24814a29-a1ac-42d0-8bda-0318b052e69b",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 9,
+                  "RowIndex": 4,
+                  "RowSpan": 4
+                },
+                {
+                  "ElementId": "558d6fae-770a-4754-afeb-692d8dc4e81e",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 9,
+                  "ColumnSpan": 9,
+                  "RowIndex": 4,
+                  "RowSpan": 4
+                },
+                {
+                  "ElementId": "ed60b3ec-de80-4061-a398-af45f7dbc3a2",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 0,
+                  "ColumnSpan": 9,
+                  "RowIndex": 8,
+                  "RowSpan": 6
+                },
+                {
+                  "ElementId": "ff3cb5c2-fbec-40bb-abef-f4bf5299b9e1",
+                  "ElementType": "VISUAL",
+                  "ColumnIndex": 9,
+                  "ColumnSpan": 9,
+                  "RowIndex": 8,
+                  "RowSpan": 6
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "ContentType": "INTERACTIVE",
+      "FilterControls": [
+        {
+          "Dropdown": {
+            "FilterControlId": "sq-model-filter-control",
+            "Title": "Model",
+            "SourceFilterId": "sq-model-filter",
+            "DisplayOptions": {
+              "SelectAllOptions": {
+                "Visibility": "VISIBLE"
+              },
+              "TitleOptions": {
+                "Visibility": "VISIBLE",
+                "FontConfiguration": {}
+              }
+            },
+            "Type": "SINGLE_SELECT"
+          }
+        }
+      ]
+    }
+  ],
+  "FilterGroups": [
+    {
+      "FilterGroupId": "exec-date-filter-group",
+      "Filters": [
+        {
+          "TimeRangeFilter": {
+            "FilterId": "exec-date-range-filter",
+            "Column": {
+              "DataSetIdentifier": "InvocationLogs",
+              "ColumnName": "timestamp"
+            },
+            "IncludeMinimum": true,
+            "IncludeMaximum": true,
+            "RangeMinimumValue": {
+              "Parameter": "DateRangeStart"
+            },
+            "RangeMaximumValue": {
+              "Parameter": "DateRangeEnd"
+            },
+            "NullOption": "NON_NULLS_ONLY",
+            "TimeGranularity": "DAY"
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "c24ce41a-7749-460d-8391-4863102266a9",
+              "Scope": "ALL_VISUALS"
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "SINGLE_DATASET"
+    },
+    {
+      "FilterGroupId": "exec-model-filter-group",
+      "Filters": [
+        {
+          "CategoryFilter": {
+            "FilterId": "exec-model-filter",
+            "Column": {
+              "DataSetIdentifier": "Metrics",
+              "ColumnName": "FriendlyModelName"
+            },
+            "Configuration": {
+              "CustomFilterListConfiguration": {
+                "MatchOperator": "CONTAINS",
+                "SelectAllOptions": "FILTER_ALL_VALUES",
+                "NullOption": "NON_NULLS_ONLY"
+              }
+            }
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "c24ce41a-7749-460d-8391-4863102266a9",
+              "Scope": "SELECTED_VISUALS",
+              "VisualIds": [
+                "4ea966cd-ec06-41b8-9c73-3352537d7838",
+                "067eee67-1ee0-41da-8b58-97fe01cf7354"
+              ]
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "SINGLE_DATASET"
+    },
+    {
+      "FilterGroupId": "cu-date-filter-group",
+      "Filters": [
+        {
+          "TimeRangeFilter": {
+            "FilterId": "cu-date-range-filter",
+            "Column": {
+              "DataSetIdentifier": "InvocationLogs",
+              "ColumnName": "timestamp"
+            },
+            "IncludeMinimum": true,
+            "IncludeMaximum": true,
+            "RangeMinimumValue": {
+              "Parameter": "DateRangeStart"
+            },
+            "RangeMaximumValue": {
+              "Parameter": "DateRangeEnd"
+            },
+            "NullOption": "NON_NULLS_ONLY",
+            "TimeGranularity": "DAY"
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "8a4f4c11-0889-4fcf-b773-fda2f6c30825",
+              "Scope": "ALL_VISUALS"
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "SINGLE_DATASET"
+    },
+    {
+      "FilterGroupId": "perf-date-filter-group",
+      "Filters": [
+        {
+          "TimeRangeFilter": {
+            "FilterId": "perf-date-range-filter",
+            "Column": {
+              "DataSetIdentifier": "InvocationLogs",
+              "ColumnName": "timestamp"
+            },
+            "IncludeMinimum": true,
+            "IncludeMaximum": true,
+            "RangeMinimumValue": {
+              "Parameter": "DateRangeStart"
+            },
+            "RangeMaximumValue": {
+              "Parameter": "DateRangeEnd"
+            },
+            "NullOption": "NON_NULLS_ONLY",
+            "TimeGranularity": "DAY"
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "8c8d6a1e-c35e-45dc-bdde-fbd8045d48ca",
+              "Scope": "ALL_VISUALS"
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "SINGLE_DATASET"
+    },
+    {
+      "FilterGroupId": "perf-model-filter-group",
+      "Filters": [
+        {
+          "CategoryFilter": {
+            "FilterId": "perf-model-filter",
+            "Column": {
+              "DataSetIdentifier": "Metrics",
+              "ColumnName": "FriendlyModelName"
+            },
+            "Configuration": {
+              "FilterListConfiguration": {
+                "MatchOperator": "CONTAINS",
+                "SelectAllOptions": "FILTER_ALL_VALUES",
+                "NullOption": "NON_NULLS_ONLY"
+              }
+            }
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "8c8d6a1e-c35e-45dc-bdde-fbd8045d48ca",
+              "Scope": "SELECTED_VISUALS",
+              "VisualIds": [
+                "3a507f6a-34ae-476a-9315-5cc26303b810",
+                "e9fa0a22-fd66-4171-bb87-7a092925395d",
+                "da3d098f-096a-4a10-8ebd-76688c762bea"
+              ]
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "SINGLE_DATASET"
+    },
+    {
+      "FilterGroupId": "sq-filter-group",
+      "Filters": [
+        {
+          "CategoryFilter": {
+            "FilterId": "sq-model-filter",
+            "Column": {
+              "DataSetIdentifier": "Metrics",
+              "ColumnName": "FriendlyModelName"
+            },
+            "Configuration": {
+              "FilterListConfiguration": {
+                "MatchOperator": "CONTAINS",
+                "SelectAllOptions": "FILTER_ALL_VALUES",
+                "NullOption": "NON_NULLS_ONLY"
+              }
+            }
+          }
+        },
+        {
+          "TimeRangeFilter": {
+            "FilterId": "sq-time-range-filter",
+            "Column": {
+              "DataSetIdentifier": "Metrics",
+              "ColumnName": "timestamp"
+            },
+            "IncludeMinimum": true,
+            "IncludeMaximum": true,
+            "RangeMinimumValue": {
+              "Parameter": "SqTimeRangeStart"
+            },
+            "RangeMaximumValue": {
+              "Parameter": "SqTimeRangeEnd"
+            },
+            "NullOption": "NON_NULLS_ONLY",
+            "TimeGranularity": "MINUTE"
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "5078c05e-89b6-482f-aa76-541e3e8e33b7",
+              "Scope": "ALL_VISUALS"
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "ALL_DATASETS"
+    },
+    {
+      "FilterGroupId": "1ad8e142-3985-4a8f-8043-926853b584ac",
+      "Filters": [
+        {
+          "TimeRangeFilter": {
+            "FilterId": "b38ff694-0f93-4029-9774-7b0a7675d1e3",
+            "Column": {
+              "DataSetIdentifier": "InvocationLogs",
+              "ColumnName": "timestamp"
+            },
+            "IncludeMinimum": true,
+            "IncludeMaximum": true,
+            "RangeMinimumValue": {
+              "Parameter": "DateRangeStart"
+            },
+            "RangeMaximumValue": {
+              "Parameter": "DateRangeEnd"
+            },
+            "NullOption": "NON_NULLS_ONLY",
+            "TimeGranularity": "DAY"
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "8a4f4c11-0889-4fcf-b773-fda2f6c30825",
+              "Scope": "SELECTED_VISUALS",
+              "VisualIds": [
+                "f3ee46e0-4d05-4fb6-acb2-4b28d7338801"
+              ]
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "SINGLE_DATASET"
+    },
+    {
+      "FilterGroupId": "47bda640-1337-463e-affd-f8b3d80552cc",
+      "Filters": [
+        {
+          "TimeRangeFilter": {
+            "FilterId": "f0ccac12-6f26-41ad-9833-65b15603833e",
+            "Column": {
+              "DataSetIdentifier": "InvocationLogs",
+              "ColumnName": "timestamp"
+            },
+            "IncludeMinimum": true,
+            "IncludeMaximum": true,
+            "RangeMinimumValue": {
+              "Parameter": "DateRangeStart"
+            },
+            "RangeMaximumValue": {
+              "Parameter": "DateRangeEnd"
+            },
+            "NullOption": "NON_NULLS_ONLY",
+            "TimeGranularity": "DAY"
+          }
+        }
+      ],
+      "ScopeConfiguration": {
+        "SelectedSheets": {
+          "SheetVisualScopingConfigurations": [
+            {
+              "SheetId": "c24ce41a-7749-460d-8391-4863102266a9",
+              "Scope": "SELECTED_VISUALS",
+              "VisualIds": [
+                "1dd51597-cb9b-476d-a385-52ac7c3e7bbc"
+              ]
+            }
+          ]
+        }
+      },
+      "Status": "ENABLED",
+      "CrossDataset": "SINGLE_DATASET"
+    }
+  ],
+  "CalculatedFields": [
+    {
+      "DataSetIdentifier": "InvocationLogs",
+      "Name": "Estimated Novels Generated",
+      "Expression": "(outputtokens / (1/3)) / 75000"
+    },
+    {
+      "DataSetIdentifier": "InvocationLogs",
+      "Name": "Estimated Words Generated ",
+      "Expression": "/*\n(AI generated) output tokens / (1/3)\n*/\noutputtokens / (1/3)"
+    },
+    {
+      "DataSetIdentifier": "InvocationLogs",
+      "Name": "TotalTokensCalc",
+      "Expression": "inputtokens + outputtokens"
+    },
+    {
+      "DataSetIdentifier": "Metrics",
+      "Name": "ErrorRate",
+      "Expression": "ifelse(sum(invocationcount) = 0, 0, sum(errorcount) / sum(invocationcount) * 100)"
+    }
+  ],
+  "ParameterDeclarations": [
+    {
+      "StringParameterDeclaration": {
+        "ParameterValueType": "SINGLE_VALUED",
+        "Name": "SqModelId",
+        "DefaultValues": {
+          "StaticValues": [
+            "ALL"
+          ]
+        },
+        "ValueWhenUnset": {
+          "ValueWhenUnsetOption": "NULL"
+        }
+      }
+    },
+    {
+      "DateTimeParameterDeclaration": {
+        "Name": "DateRangeStart",
+        "DefaultValues": {
+          "StaticValues": [],
+          "RollingDate": {
+            "Expression": "addDateTime(-30, 'DD', truncDate('DD', now()))"
+          }
+        },
+        "TimeGranularity": "DAY"
+      }
+    },
+    {
+      "DateTimeParameterDeclaration": {
+        "Name": "DateRangeEnd",
+        "DefaultValues": {
+          "StaticValues": [],
+          "RollingDate": {
+            "Expression": "truncDate('DD', now())"
+          }
+        },
+        "TimeGranularity": "DAY"
+      }
+    },
+    {
+      "DateTimeParameterDeclaration": {
+        "Name": "SqTimeRangeStart",
+        "DefaultValues": {
+          "StaticValues": [],
+          "RollingDate": {
+            "Expression": "addDateTime(-1, 'DD', now())"
+          }
+        },
+        "TimeGranularity": "MINUTE"
+      }
+    },
+    {
+      "DateTimeParameterDeclaration": {
+        "Name": "SqTimeRangeEnd",
+        "DefaultValues": {
+          "StaticValues": [],
+          "RollingDate": {
+            "Expression": "now()"
+          }
+        },
+        "TimeGranularity": "MINUTE"
+      }
+    }
+  ],
+  "AnalysisDefaults": {
+    "DefaultNewSheetConfiguration": {
+      "InteractiveLayoutConfiguration": {
+        "Grid": {
+          "CanvasSizeOptions": {
+            "ScreenCanvasSizeOptions": {
+              "ResizeOption": "RESPONSIVE"
+            }
+          }
+        }
+      },
+      "SheetContentType": "INTERACTIVE"
+    }
+  }
+}

@@ -1,0 +1,134 @@
+# =============================================================================
+# Bedrock Usage Intelligence Platform — Configuration
+# =============================================================================
+# Adjust values for your environment, then run:
+#   npx cdk synth   — validates config and synthesizes CloudFormation templates
+#   npx cdk deploy --all  — deploys all stacks to your AWS account
+#
+# All optional fields shown below have documented defaults. You may omit any
+# optional field and the platform will apply the default automatically.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# VPC Configuration
+# -----------------------------------------------------------------------------
+# vpcMode: "create"   — provision a new VPC (default)
+# vpcMode: "existing" — import an existing VPC by ID
+vpc:
+  vpcMode: "create"
+  vpcCidr: "10.0.0.0/16"          # optional — default: "10.0.0.0/16"
+  enableNatGateway: false          # optional — only needed for internet access
+  vpcEndpointMode: "minimal"       # optional — "minimal" or "full"
+
+
+# -----------------------------------------------------------------------------
+# Account Scope
+# -----------------------------------------------------------------------------
+# accountMode: "single" — deploy for the current account only (default)
+# accountMode: "multi"  — ingest logs from multiple source accounts
+account:
+  accountMode: "single"
+
+# Multi-account example:
+# account:
+#   accountMode: "multi"
+#   sourceAccountIds:
+#     - "123456789012"
+#     - "234567890123"
+#   organizationId: "o-abc1234567"   # optional — uses aws:PrincipalOrgID
+
+
+# -----------------------------------------------------------------------------
+# Region Scope
+# -----------------------------------------------------------------------------
+# regionMode: "single" — collect data from the deployment region only (default)
+# regionMode: "multi"  — aggregate data from multiple source regions
+region:
+  regionMode: "single"
+
+# Multi-region example:
+# region:
+#   regionMode: "multi"
+#   sourceRegions:
+#     - "us-east-1"
+#     - "us-west-2"
+#     - "eu-west-1"
+
+
+# -----------------------------------------------------------------------------
+# Identity Provider Mode
+# -----------------------------------------------------------------------------
+# identityMode: "iam"  — resolve IAM principal ARNs only (default)
+# identityMode: "sso"  — map IAM role sessions to SSO users via Identity Center
+# identityMode: "auto" — try SSO first, fall back to IAM
+identity:
+  identityMode: "iam"
+
+# SSO example:
+# identity:
+#   identityMode: "sso"
+#   identityStoreId: "d-1234567890"
+
+
+# -----------------------------------------------------------------------------
+# Data Exports (CUR 2.0) Configuration
+# -----------------------------------------------------------------------------
+# AWS Data Exports delivers authoritative cost data (CUR 2.0) to an S3 bucket.
+# The platform ingests CUR files and reconciles per-user costs proportionally.
+#
+# PREREQUISITE: Create a Data Export in the AWS Billing console and configure
+#               it to deliver to the S3 bucket specified below.
+dataExports:
+  curBucketName: "YOUR-CUR-BUCKET-NAME"          # required — S3 bucket where CUR files land
+  curReportPrefix: "cur-reports"                  # optional — S3 key prefix for CUR files
+  curReportFormat: "csv"                          # optional — "csv" (default) or "parquet"
+  reconciliationSchedule: "rate(6 hours)"         # optional — default: "rate(6 hours)"
+
+
+# -----------------------------------------------------------------------------
+# Dashboard (Amazon QuickSight)
+# -----------------------------------------------------------------------------
+# enableQuickSuite: false — skip all QuickSight resource creation (default)
+# enableQuickSuite: true  — deploy QuickSight dashboards
+#
+# PREREQUISITE: QuickSight must be activated in the AWS console before deploying.
+dashboard:
+  enableQuickSuite: false
+
+# QuickSight example:
+# dashboard:
+#   enableQuickSuite: true
+#   quickSuiteEdition: "STANDARD"       # "STANDARD" or "ENTERPRISE"
+#   quickSightPrincipalArn: "arn:aws:quicksight:REGION:ACCOUNT_ID:user/default/YOUR_USER"
+
+
+# -----------------------------------------------------------------------------
+# CloudTrail Configuration
+# -----------------------------------------------------------------------------
+# cloudTrailMode: "existing" — read from an existing CloudTrail S3 bucket
+# cloudTrailMode: "create"   — provision a new CloudTrail trail
+cloudTrail:
+  cloudTrailMode: "create"
+
+# Existing CloudTrail example:
+# cloudTrail:
+#   cloudTrailMode: "existing"
+#   existingCloudTrailBucket: "your-cloudtrail-bucket-name"
+
+
+# -----------------------------------------------------------------------------
+# Deployment Metadata
+# -----------------------------------------------------------------------------
+deployment:
+  solutionName: "bedrock-usage-intel"    # prefix for all resource names
+  environment: "dev"                     # "dev" | "staging" | "production"
+  tags:                                  # optional — applied to all resources
+    Project: "bedrock-usage-intelligence"
+
+
+# -----------------------------------------------------------------------------
+# Bedrock Invocation Logging Bootstrap
+# -----------------------------------------------------------------------------
+# When true, automatically enables Bedrock Model Invocation Logging
+enableInvocationLogging: true

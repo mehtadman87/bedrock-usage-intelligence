@@ -1,0 +1,61 @@
+{
+  "name": "bedrock-usage-intelligence",
+  "version": "0.1.0",
+  "description": "Bedrock Usage Intelligence Platform - CDK TypeScript application",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest --runInBand",
+    "test:unit": "jest --testPathPattern=test/unit",
+    "test:property": "jest --testPathPattern=test/property",
+    "test:integration": "jest --testPathPattern=test/integration --runInBand",
+    "test:fast": "jest --testPathPattern=test/unit|test/property",
+    "test:coverage": "jest --coverage --runInBand",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy --all"
+  },
+  "dependencies": {
+    "@aws-sdk/client-athena": "^3.1000.0",
+    "@aws-sdk/client-bedrock": "^3.750.0",
+    "@aws-sdk/client-cloudwatch": "^3.750.0",
+    "@aws-sdk/client-dynamodb": "^3.750.0",
+    "@aws-sdk/client-iam": "^3.750.0",
+    "@aws-sdk/client-identitystore": "^3.750.0",
+    "@aws-sdk/client-lambda": "^3.997.0",
+    "@aws-sdk/client-pricing": "^3.750.0",
+    "@aws-sdk/client-quicksight": "^3.994.0",
+    "@aws-sdk/client-s3": "^3.750.0",
+    "@aws-sdk/client-sqs": "^3.999.0",
+    "@aws-sdk/client-sso-admin": "^3.750.0",
+    "@aws-sdk/client-sts": "^3.750.0",
+    "@aws-sdk/lib-dynamodb": "^3.750.0",
+    "@dsnp/parquetjs": "^1.8.0",
+    "aws-cdk-lib": "^2.170.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21",
+    "yaml": "^2.7.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "^2.0.0",
+    "@types/aws-lambda": "^8.10.160",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.0.0",
+    "@types/yaml": "^1.9.7",
+    "aws-cdk": "^2.170.0",
+    "aws-sdk-client-mock": "^4.1.0",
+    "aws-sdk-client-mock-jest": "^4.1.0",
+    "esbuild": "^0.24.2",
+    "fast-check": "^3.23.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "main": "bin/app.js"
+}

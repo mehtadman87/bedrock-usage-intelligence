@@ -1,0 +1,101 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Bedrock Usage Intelligence Platform - Source Account Setup
+  Deploy this template in each source AWS account to configure cross-account
+  log delivery permissions to the central Platform account.
+
+Parameters:
+  CentralAccountId:
+    Type: String
+    Description: The 12-digit AWS account ID of the central Bedrock Usage Intelligence Platform account.
+    AllowedPattern: '^\d{12}$'
+    ConstraintDescription: Must be a 12-digit AWS account ID.
+
+  CentralBucketArn:
+    Type: String
+    Description: The ARN of the central S3 bucket in the Platform account that receives Bedrock invocation logs.
+    AllowedPattern: '^arn:aws:s3:::.*$'
+    ConstraintDescription: Must be a valid S3 bucket ARN (arn:aws:s3:::bucket-name).
+
+Resources:
+
+  # ── IAM Policy: minimum permissions for cross-account log delivery ──────────
+  BedrockLogDeliveryPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: BedrockLogDeliveryPolicy
+      Description: >
+        Minimum IAM permissions required for cross-account Bedrock invocation log
+        delivery to the central Bedrock Usage Intelligence Platform account.
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          # Allow writing Bedrock invocation logs to the central S3 bucket
+          - Sid: AllowPutObjectToCentralBucket
+            Effect: Allow
+            Action:
+              - s3:PutObject
+            Resource: !Sub '${CentralBucketArn}/*'
+
+          # Allow checking the central bucket's encryption configuration
+          - Sid: AllowGetBucketEncryption
+            Effect: Allow
+            Action:
+              - s3:GetEncryptionConfiguration
+            Resource: !Ref CentralBucketArn
+
+          # Allow enabling Bedrock Model Invocation Logging in this source account
+          - Sid: AllowBedrockLoggingConfiguration
+            Effect: Allow
+            Action:
+              - bedrock:PutModelInvocationLoggingConfiguration
+              - bedrock:GetModelInvocationLoggingConfiguration
+            Resource: '*'
+
+  # ── IAM Role: assumed by the central account to configure log delivery ───────
+  BedrockLogDeliveryRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: BedrockLogDeliveryRole
+      Description: >
+        IAM role assumed by the central Bedrock Usage Intelligence Platform account
+        to configure Bedrock invocation logging and deliver logs to the central S3 bucket.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCentralAccountToAssume
+            Effect: Allow
+            Principal:
+              AWS: !Sub 'arn:aws:iam::${CentralAccountId}:root'
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                sts:ExternalId: !Sub 'bedrock-usage-intel-${AWS::AccountId}'
+      ManagedPolicyArns:
+        - !Ref BedrockLogDeliveryPolicy
+      Tags:
+        - Key: ManagedBy
+          Value: BedrockUsageIntelligencePlatform
+        - Key: CentralAccountId
+          Value: !Ref CentralAccountId
+
+Outputs:
+  BedrockLogDeliveryRoleArn:
+    Description: >
+      ARN of the BedrockLogDeliveryRole. Provide this ARN to the central Platform
+      account administrator to complete the cross-account setup.
+    Value: !GetAtt BedrockLogDeliveryRole.Arn
+    Export:
+      Name: !Sub '${AWS::StackName}-BedrockLogDeliveryRoleArn'
+
+  BedrockLogDeliveryPolicyArn:
+    Description: ARN of the BedrockLogDeliveryPolicy attached to the delivery role.
+    Value: !Ref BedrockLogDeliveryPolicy
+    Export:
+      Name: !Sub '${AWS::StackName}-BedrockLogDeliveryPolicyArn'
+
+  SourceAccountId:
+    Description: The AWS account ID where this template was deployed (the source account).
+    Value: !Ref AWS::AccountId
+    Export:
+      Name: !Sub '${AWS::StackName}-SourceAccountId'
