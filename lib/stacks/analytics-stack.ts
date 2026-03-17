@@ -878,17 +878,18 @@ export class AnalyticsStack extends cdk.Stack {
       });
     }
 
-    // ── SPICE Hourly Refresh Schedules ────────────────────────────────────────
-    // SPICE is always enabled — refresh schedules are always created.
-    // Schedules run at the top of every hour using a cron expression.
+    // ── SPICE Refresh Schedules (every 12 hours) ─────────────────────────────
+    // SPICE is always enabled — refresh schedules run twice daily to keep
+    // dashboard data current while minimizing S3 LIST operations from
+    // Athena partition projection scans.
     new quicksight.CfnRefreshSchedule(this, 'InvocationsDataSetRefreshSchedule', {
       awsAccountId,
       dataSetId,
       schedule: {
-        scheduleId: `${solutionName}-invocations-hourly-refresh`,
+        scheduleId: `${solutionName}-invocations-refresh`,
         scheduleFrequency: {
-          interval: 'HOURLY',
-          timeOfTheDay: '00:00',
+          interval: 'DAILY',
+          timeOfTheDay: '06:00',
         },
         refreshType: 'FULL_REFRESH',
       },
@@ -898,10 +899,10 @@ export class AnalyticsStack extends cdk.Stack {
       awsAccountId,
       dataSetId: metricsDataSetId,
       schedule: {
-        scheduleId: `${solutionName}-metrics-hourly-refresh`,
+        scheduleId: `${solutionName}-metrics-refresh`,
         scheduleFrequency: {
-          interval: 'HOURLY',
-          timeOfTheDay: '00:00',
+          interval: 'DAILY',
+          timeOfTheDay: '06:00',
         },
         refreshType: 'FULL_REFRESH',
       },

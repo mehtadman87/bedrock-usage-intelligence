@@ -33,11 +33,11 @@ Optional:
 
 Examples:
   bash scripts/enable-cloudwatch-logs-encryption.sh \\
-    --cmk-arn <CMK_ARN_FROM_DEPLOY_OUTPUT> \\
+    --cmk-arn arn:aws:kms:us-east-1:123456789012:key/abc123 \\
     --solution-name bedrock-usage-intel
 
   bash scripts/enable-cloudwatch-logs-encryption.sh \\
-    --cmk-arn <CMK_ARN_FROM_DEPLOY_OUTPUT> \\
+    --cmk-arn arn:aws:kms:us-east-1:123456789012:key/abc123 \\
     --solution-name bedrock-usage-intel \\
     --dry-run
 EOF

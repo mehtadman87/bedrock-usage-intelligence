@@ -195,11 +195,11 @@ export class IngestionStack extends cdk.Stack {
       },
     });
 
-    // EventBridge rule: 5-minute schedule
+    // EventBridge rule: daily schedule (once every 24 hours)
     const metricsRule = new events.Rule(this, 'MetricsCollectorSchedule', {
       ruleName: `${solutionName}-metrics-collector-schedule`,
-      schedule: events.Schedule.rate(cdk.Duration.minutes(5)),
-      description: 'Triggers Metrics Collector Lambda every 5 minutes',
+      schedule: events.Schedule.rate(cdk.Duration.hours(24)),
+      description: 'Triggers Metrics Collector Lambda every 24 hours',
     });
     metricsRule.addTarget(
       new targets.LambdaFunction(this.metricsCollector, {
